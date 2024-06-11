@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fun.cyhgraph.mapper.SetmealMapper">
+
+    <insert id="addSetmeal" useGeneratedKeys="true" keyProperty="id">
+        insert into setmeal (name, pic, detail, price, category_id, create_user, update_user, create_time, update_time)
+        VALUES
+        (#{name}, #{pic}, #{detail}, #{price}, #{categoryId},
+         #{createUser}, #{updateUser}, #{createTime}, #{updateTime})
+    </insert>
+
+    <update id="update">
+        update setmeal
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="pic != null">pic = #{pic},</if>
+            <if test="detail != null">detail = #{detail},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="categoryId != null">category_id = #{categoryId},</if>
+            <if test="createUser != null">create_user = #{createUser},</if>
+            <if test="updateUser != null">update_user = #{updateUser},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBatch">
+        delete from setmeal where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+           #{id}
+        </foreach>
+    </delete>
+
+    <select id="getPageList" resultType="fun.cyhgraph.entity.Setmeal">
+        select * from setmeal
+        <where>
+            <if test="name != null and name != ''">
+                and name like concat('%', #{name}, '%')
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="getList" resultType="fun.cyhgraph.entity.Setmeal">
+        select * from setmeal
+        <where>
+            <if test="name != null and name != ''">
+                and name like concat('%', #{name}, '%')
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+</mapper>

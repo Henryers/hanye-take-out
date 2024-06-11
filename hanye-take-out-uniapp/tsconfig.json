@@ -1,0 +1,40 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "@dcloudio/types", // uni-app API 类型
+      "@types/wechat-miniprogram", // 原生微信小程序类型
+      "@uni-helper/uni-app-types", // uni-app 组件类型
+      "@uni-helper/uni-ui-types" // uni-ui 组件类型  
+    ],
+    "preserveValueImports": false,
+  },
+  // 默认情况下，UniApp 将所有标签都认为是 Vue 组件 
+  // 通过配置 nativeTags，我们可以告诉编译器哪些标签应该被认为是原生标签
+  // 比如：block 在微信小程序中对应 <block> 标签，在编译时会保留原生标签的特性
+  "vueCompilerOptions": {
+    "nativeTags": [
+      "block",
+      "component",
+      "template",
+      "slot"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+, "src/components/SimpleAddress/SimpleAddress.nvue"  ]
+}

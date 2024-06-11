@@ -1,0 +1,22 @@
+hanye:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hanye_take_out
+    username: root
+    password: 20040111
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 1
+  wechat:
+    appid: wxbd5d45c4c0860e6d
+    secret: 3e9d250d89a4140bdb5aac8d69aa23bb
+#    别人的文件，由于没企业商户号，这里只是摆设
+    mchid: 1561414331
+    mchSerialNo: 4B3B3DC35414AD50B1B755BAF8DE9CC7CF407606
+    privateKeyFilePath: C:\software\apiclient_key.pem
+    apiV3Key: CZBK51236435wxpay435434323FFDuv3
+    weChatPayCertFilePath: C:\software\wechatpay_166D96F876F45C7D07CE98952A96EC980368ACFC.pem
+    notifyUrl: https://9ea0754.r19.cpolar.top/notify/paySuccess
+    refundNotifyUrl: https://9ea0754.r19.cpolar.top/notify/refundSuccess

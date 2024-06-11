@@ -1,0 +1,16 @@
+{
+  "id": "4579762",
+  "name": "hanye-take-out",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "寒页外卖",
+  "glyphs": [
+    {
+      "icon_id": "900060",
+      "name": "电话",
+      "font_class": "dianhua",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    }
+  ]
+}

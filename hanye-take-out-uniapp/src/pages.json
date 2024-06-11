@@ -1,0 +1,143 @@
+{
+	// 组件自动导入
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			// uni-ui 规则如下配置
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+		}
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录页"
+			}
+		},
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/order/order",
+			"style": {
+				"navigationStyle": "custom", // 隐藏默认导航
+				"navigationBarTitleText": "点餐",
+				// "app-plus": {
+				// 	"titleNView": {
+				// 		"buttons": [
+				// 			{
+				// 				"fontSrc": "/static/styles/iconfont.ttf",
+				// 				"float": "right",
+				// 				"text": "\ue70c",
+				// 				"color": "#3855FB"
+				// 			}
+				// 		]
+				// 	}
+				// }
+			}
+		},
+		{
+			"path": "pages/detail/detail",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
+		},
+		{
+			"path": "pages/submit/submit",
+			"style": {
+				"navigationBarTitleText": "提交订单"
+			}
+		},
+		{
+			"path": "pages/submit/success",
+			"style": {
+				"navigationBarTitleText": "提交成功"
+			}
+		},
+		{
+			"path": "pages/address/address",
+			"style": {
+				"navigationBarTitleText": "地址管理"
+			}
+		},
+		{
+			"path": "pages/addOrEditAddress/addOrEditAddress",
+			"style": {
+				"navigationBarTitleText": "新增/修改地址"
+			}
+		},
+		{
+			"path": "pages/remark/remark",
+			"style": {
+				"navigationBarTitleText": "备注"
+			}
+		},
+		{
+			"path": "pages/pay/pay",
+			"style": {
+				"navigationBarTitleText": "支付订单"
+			}
+		},
+		{
+			"path": "pages/orderDetail/orderDetail",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		},
+		{
+			"path": "pages/history/history",
+			"style": {
+				"navigationBarTitleText": "历史订单"
+			}
+		},
+		{
+			"path": "pages/updateMy/updateMy",
+			"style": {
+				"navigationBarTitleText": "信息设置"
+			}
+		}
+	],
+	// 设置 TabBar
+	"tabBar": {
+		"color": "#333",
+		"selectedColor": "#00aaff",
+		"backgroundColor": "#fff",
+		"borderStyle": "white",
+		"list": [
+			{
+				"text": "首页",
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabs/home_default.png",
+				"selectedIconPath": "static/tabs/home_selected.png"
+			},
+			// {
+			// 	"text": "分类",
+			// 	"pagePath": "pages/category/category",
+			// 	"iconPath": "static/tabs/category_default.png",
+			// 	"selectedIconPath": "static/tabs/category_selected.png"
+			// },
+			{
+				"text": "我的",
+				"pagePath": "pages/my/my",
+				"iconPath": "static/tabs/user_default.png",
+				"selectedIconPath": "static/tabs/user_selected.png"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#00aaff",
+		"backgroundColor": "#F8F8F8"
+	}
+}

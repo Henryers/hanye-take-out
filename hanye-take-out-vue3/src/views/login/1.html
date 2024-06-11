@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    #rain-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .raindrop {
+      position: absolute;
+      background-color: #00f;
+      width: 2px;
+      height: 20px;
+      animation: raindrop-fall linear infinite;
+    }
+
+    @keyframes raindrop-fall {
+      0% {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="rain-container"></div>
+
+  <script>
+    // 创建下雨效果的粒子
+    function createRaindrop() {
+      const raindrop = document.createElement('div');
+      raindrop.className = 'raindrop';
+      raindrop.style.left = `${Math.random() * 100}%`;
+      document.getElementById('rain-container').appendChild(raindrop);
+    }
+
+    // 初始化下雨效果
+    function initRainEffect() {
+      for (let i = 0; i < 100; i++) {
+        createRaindrop();
+      }
+    }
+
+    // 启动下雨效果
+    function startRainEffect() {
+      setInterval(createRaindrop, 100);
+    }
+
+    // 初始化并启动下雨效果
+    initRainEffect();
+    startRainEffect();
+  </script>
+</body>
+
+</html>

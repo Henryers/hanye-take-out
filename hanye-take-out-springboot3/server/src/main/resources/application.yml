@@ -1,0 +1,58 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: ${hanye.datasource.driver-class-name}
+    url: ${hanye.datasource.url}
+    username: ${hanye.datasource.username}
+    password: ${hanye.datasource.password}
+  data:
+    redis:
+      host: ${hanye.redis.host}
+      port: ${hanye.redis.port}
+      password: ${hanye.redis.password}
+      database: ${hanye.redis.database}
+
+# ??mybatis
+mybatis:
+  #mapper????
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.entity
+  configuration:
+    # ??mybatis????????????
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # ??mybatis???????????  a_column = aColumn
+    map-underscore-to-camel-case: true
+
+login-reg:
+  jwt:
+    employee-secret-key: cyh_handsome
+    employee-ttl: 864000000
+    employee-token-name: Authorization
+    user-secret-key: user_handsome
+    user-ttl: 864000000
+    user-token-name: Authorization
+
+hanye:
+  wechat:
+    appid: ${hanye.wechat.appid}
+    secret: ${hanye.wechat.secret}
+
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: cyh_handsome
+    # 设置jwt过期时间
+    admin-ttl: 86400000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    user-secret-key: user_handsome
+    user-ttl: 86400000
+    user-token-name: authentication
+
+  shop:
+    address: 北京市海淀区上地十街10号
+  baidu:
+    ak: ePMydufnJzBBTQlrzKwxAmlpRApLxmOW

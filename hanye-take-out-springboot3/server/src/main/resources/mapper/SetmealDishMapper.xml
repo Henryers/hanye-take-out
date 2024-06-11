@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fun.cyhgraph.mapper.SetmealDishMapper">
+
+
+    <insert id="insertBatch">
+        insert into setmeal_dish (name, price, copies, dish_id, setmeal_id) VALUES
+        <foreach collection="setmealDishes" item="dish" separator=",">
+            (#{dish.name}, #{dish.price}, #{dish.copies}, #{dish.dishId}, #{dish.setmealId})
+        </foreach>
+    </insert>
+
+    <delete id="deleteBatch">
+        delete from setmeal_dish where setmeal_id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <select id="getSetmealIdsByDishIds" resultType="java.lang.Integer">
+        select setmeal_id from setmeal_dish where dish_id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+
+</mapper>
