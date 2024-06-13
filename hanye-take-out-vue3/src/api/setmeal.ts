@@ -58,7 +58,7 @@ export const updateSetmealAPI = (params: any) => {
  * @returns
  */
 export const updateSetmealStatusAPI = (id: number) => {
-  console.log('发请求啊！', id)
+  console.log('套餐id', id)
   return request({
     url: `/setmeal/status/${id}`,
     method: 'put'

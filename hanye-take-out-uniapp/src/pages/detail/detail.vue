@@ -246,22 +246,6 @@ const getCopies = (dish: DishItem | SetmealItem) => {
   }
 }
 
-const addDishToCart = async (dish: DishItem | SetmealItem) => {
-  console.log('addDishToCart', dish)
-  // 有可能是套餐或者菜品，先按categoryList遍历，拿到这个菜品对应的分类，获取其sort来判断
-  const sort = categoryList.value.find((item) => item.id === dish.categoryId)?.sort
-  console.log('category？', sort)
-  if (sort && sort < 20) {
-    const partialCart: Partial<CartDTO> = {dishId: dish.id}
-    await addToCartAPI(partialCart)
-  } else {
-    const partialCart: Partial<CartDTO> = {setmealId: dish.id}
-    await addToCartAPI(partialCart)
-  }
-  // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
-  await getCartList()
-}
-
 // 只有菜品才要选择规格/口味(多种口味规格数据处理)
 const chooseNorm = async (dish: DishItem) => {
   console.log('点击了选择规格chooseNorm，得到了该菜品的所有口味数据', dish.flavors)
@@ -354,41 +338,17 @@ const addDishAction = async (item: any, form: string) => {
       dishFlavor: item.dishFlavor,
     }
     await addToCartAPI(partialCart)
-    // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
-    await getCartList()
   } else if (form == '菜品') {
-    // 2、dishItem无dishId、setmealId两个属性，因此得判断
-    // 先按categoryList遍历，拿到这个菜品对应的分类，获取其sort来判断
-    // console.log('普通页面下的dish，点击能直接添加(而不弹出dialog)的菜品说明无口味', item)
-    // const sort = categoryList.value.find((item) => item.id === dish.value!.categoryId)?.sort
-    // console.log('category？？？？？？？？？？？', sort)
-    // if (sort && sort < 20) {
-    //   const partialCart: Partial<CartDTO> = { dishId: dish.value!.id }
-    //   await addToCartAPI(partialCart)
-    // } else {
-    //   const partialCart: Partial<CartDTO> = { setmealId: setmeal.value!.id }
-    //   await addToCartAPI(partialCart)
-    // }
+    // 2、添加的是菜品
     const partialCart: Partial<CartDTO> = {dishId: dish.value!.id}
     await addToCartAPI(partialCart)
-    // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
-    await getCartList()
   } else {
-    // 2、dishItem无dishId、setmealId两个属性，因此得判断
-    // 先按categoryList遍历，拿到这个菜品对应的分类，获取其sort来判断
-    // console.log('普通页面下的dish，点击能直接添加(而不弹出dialog)的菜品说明无口味', item)
-    // const sort = categoryList.value.find((item) => item.id === dish.value!.categoryId)?.sort
-    // console.log('category？？？？？？？？？？？', sort)
-    // if (sort && sort < 20) {
-    //   const partialCart: Partial<CartDTO> = {dishId: dish.value!.id}
-    //   await addToCartAPI(partialCart)
-    // } else {
+    // 3、添加的是套餐
     const partialCart: Partial<CartDTO> = {setmealId: setmeal.value!.id}
     await addToCartAPI(partialCart)
-    // }
-    // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
-    await getCartList()
   }
+  // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
+  await getCartList()
 }
 // "-"按钮，form: 购物车/普通视图中的按钮
 const subDishAction = async (item: any, form: string) => {
@@ -402,31 +362,17 @@ const subDishAction = async (item: any, form: string) => {
       dishFlavor: item.dishFlavor,
     }
     await subCartAPI(partialCart)
-    // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
-    await getCartList()
   } else if (form == '菜品') {
-    // 2、dishItem无dishId、setmealId两个属性，因此得判断
-    // console.log('普通页面下的dish，点击能直接添加(而不弹出dialog)的菜品说明无口味', item)
-    // const sort = categoryList.value.find((item) => item.id === dish.value!.categoryId)?.sort
-    // console.log('category？？？？？？？？？？？', sort)
-    // if (sort && sort < 20) {
-    //   const partialCart: Partial<CartDTO> = {dishId: dish.value!.id}
-    //   await subCartAPI(partialCart)
-    // } else {
-    //   const partialCart: Partial<CartDTO> = {setmealId: dish.value!.id}
-    //   await subCartAPI(partialCart)
-    // }
+    // 2、菜品
     const partialCart: Partial<CartDTO> = {dishId: dish.value!.id}
     await subCartAPI(partialCart)
-    // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
-    await getCartList()
   } else {
     // 3、套餐
     const partialCart: Partial<CartDTO> = {setmealId: setmeal.value!.id}
     await subCartAPI(partialCart)
-    // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
-    await getCartList()
   }
+  // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
+  await getCartList()
 }
 
 // 清空购物车
@@ -1019,215 +965,6 @@ const submitOrder = () => {
     }
   }
 
-  // .dish_detail_pop {
-  //   width: calc(100vw - 160rpx);
-  //   box-sizing: border-box;
-  //   position: relative;
-  //   top: 50%;
-  //   left: 50%;
-  //   padding: 40rpx;
-  //   transform: translateX(-50%) translateY(-50%);
-  //   background: #fff;
-  //   border-radius: 20rpx;
-
-  //   .div_big_image {
-  //     width: 100%;
-  //     height: 320rpx;
-  //     border-radius: 10rpx;
-  //   }
-
-  //   .title {
-  //     font-size: 40rpx;
-  //     line-height: 80rpx;
-  //     text-align: center;
-  //     font-weight: bold;
-  //   }
-
-  //   .dish_items {
-  //     height: 60vh;
-  //   }
-
-  //   .but_item {
-  //     display: flex;
-  //     position: relative;
-  //     flex: 1;
-
-  //     .price {
-  //       text-align: left;
-  //       color: #e94e3c;
-  //       line-height: 88rpx;
-  //       box-sizing: border-box;
-  //       font-size: 48rpx;
-  //       font-weight: bold;
-
-  //       .ico {
-  //         font-size: 28rpx;
-  //       }
-  //     }
-
-  //     .active {
-  //       position: absolute;
-  //       right: 0rpx;
-  //       bottom: 20rpx;
-  //       display: flex;
-
-  //       .dish_add,
-  //       .dish_red {
-  //         display: block;
-  //         width: 72rpx;
-  //         height: 72rpx;
-  //       }
-
-  //       .dish_number {
-  //         padding: 0 10rpx;
-  //         line-height: 72rpx;
-  //         font-size: 30rpx;
-  //         font-family: PingFangSC, PingFangSC-Medium;
-  //         font-weight: 500;
-  //       }
-
-  //       .dish_card_add {
-  //         width: 200rpx;
-  //         line-height: 60rpx;
-  //         text-align: center;
-  //         font-weight: 500;
-  //         font-size: 28rpx;
-  //         opacity: 1;
-  //         background: #ffc200;
-  //         border-radius: 30rpx;
-  //       }
-  //     }
-  //   }
-  // }
-
-  // .more_norm_pop {
-  //   width: calc(100vw - 160rpx);
-  //   box-sizing: border-box;
-  //   position: relative;
-  //   top: 50%;
-  //   left: 50%;
-  //   padding: 40rpx;
-  //   transform: translateX(-50%) translateY(-50%);
-  //   background: #fff;
-  //   border-radius: 20rpx;
-
-  //   .div_big_image {
-  //     width: 100%;
-  //     border-radius: 10rpx;
-  //   }
-
-  //   .title {
-  //     font-size: 40rpx;
-  //     line-height: 80rpx;
-  //     text-align: center;
-  //     font-weight: bold;
-  //   }
-
-  //   .items_cont {
-  //     display: flex;
-  //     flex-wrap: wrap;
-  //     margin-left: -14rpx;
-  //     max-height: 50vh;
-
-  //     .item_row {
-  //       .flavor_name {
-  //         height: 40rpx;
-  //         opacity: 1;
-  //         font-size: 28rpx;
-  //         font-family: PingFangSC, PingFangSC-Regular;
-  //         font-weight: 400;
-  //         text-align: left;
-  //         color: #666666;
-  //         line-height: 40rpx;
-  //         padding-left: 10rpx;
-  //         padding-top: 20rpx;
-  //       }
-
-  //       .flavor_item {
-  //         display: flex;
-  //         flex-wrap: wrap;
-
-  //         .item {
-  //           border: 1px solid #ffb302;
-  //           border-radius: 12rpx;
-  //           margin: 20rpx 10rpx;
-  //           padding: 0 26rpx;
-  //           height: 60rpx;
-  //           line-height: 60rpx;
-  //           font-family: PingFangSC, PingFangSC-Regular;
-  //           font-weight: 400;
-  //           color: #333333;
-  //         }
-
-  //         .act {
-  //           // background: linear-gradient(144deg, #ffda05 18%, #ffb302 80%);
-  //           background: #ffc200;
-  //           border: 1px solid #ffc200;
-  //           font-family: PingFangSC, PingFangSC-Medium;
-  //           font-weight: 500;
-  //         }
-  //       }
-  //     }
-  //   }
-
-  //   .but_item {
-  //     display: flex;
-  //     position: relative;
-  //     flex: 1;
-  //     padding-left: 10rpx;
-  //     margin: 34rpx 0 -20rpx 0;
-
-  //     .price {
-  //       text-align: left;
-  //       color: #e94e3c;
-  //       line-height: 88rpx;
-  //       box-sizing: border-box;
-  //       font-size: 48rpx;
-  //       font-family: DIN, DIN-Medium;
-  //       font-weight: 500;
-
-  //       .ico {
-  //         font-size: 28rpx;
-  //       }
-  //     }
-
-  //     .active {
-  //       position: absolute;
-  //       right: 0rpx;
-  //       bottom: 20rpx;
-  //       display: flex;
-
-  //       .dish_add,
-  //       .dish_red {
-  //         display: block;
-  //         width: 72rpx;
-  //         height: 72rpx;
-  //       }
-
-  //       .dish_number {
-  //         padding: 0 10rpx;
-  //         line-height: 72rpx;
-  //         font-size: 30rpx;
-  //         font-family: PingFangSC, PingFangSC-Medium;
-  //         font-weight: 500;
-  //       }
-
-  //       .dish_card_add {
-  //         width: 200rpx;
-  //         height: 60rpx;
-  //         line-height: 60rpx;
-  //         text-align: center;
-  //         font-weight: 500;
-  //         font-size: 28rpx;
-  //         opacity: 1;
-  //         // background: linear-gradient(144deg, #ffda05 18%, #ffb302 80%);
-  //         background: #ffc200;
-  //         border-radius: 30rpx;
-  //       }
-  //     }
-  //   }
-  // }
-
   .lodding {
     position: relative;
     top: 40%;
@@ -1256,3 +993,19 @@ const submitOrder = () => {
   }
 }
 </style>
+
+<!-- const addDishToCart = async (dish: DishItem | SetmealItem) => {
+  console.log('addDishToCart', dish)
+  // 有可能是套餐或者菜品，先按categoryList遍历，拿到这个菜品对应的分类，获取其sort来判断
+  const sort = categoryList.value.find((item) => item.id === dish.categoryId)?.sort
+  console.log('category？', sort)
+  if (sort && sort < 20) {
+    const partialCart: Partial<CartDTO> = {dishId: dish.id}
+    await addToCartAPI(partialCart)
+  } else {
+    const partialCart: Partial<CartDTO> = {setmealId: dish.id}
+    await addToCartAPI(partialCart)
+  }
+  // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
+  await getCartList()
+} -->

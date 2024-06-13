@@ -56,7 +56,6 @@ const registerFn = async () => {
   if (valid) {
     // 通过校验，拿到绑定的数据
     console.log('注册的表单ref:  ', registerRef)
-    console.log('form:  ', form)
     console.log('form.value:  ', form.value)
     // 1.调用注册接口，通过接口的return request，拿到promise对象
     const { data: res } = await registerAPI(form.value)

@@ -74,9 +74,7 @@
 
 <script lang="ts" setup>
 import {ref} from 'vue'
-// import SimpleAddress from '@components/SimpleAddress/SimpleAddress.vue'
 import {addAddressAPI, deleteAddressAPI, getAddressByIdAPI, updateAddressAPI} from '@/api/address'
-// import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue'
 import {onLoad, onShow, onUnload} from '@dcloudio/uni-app'
 import {reactive} from 'vue'
 import type {Address} from '@/types/address'
@@ -99,9 +97,6 @@ const pickerChange: UniHelper.RegionPickerOnChange = (ev) => {
 
 const platform = ref('ios')
 const showDel = ref(false)
-const showInput = ref(true)
-const valueMan = ref(true)
-const valueWoman = ref(true)
 const items = [
   {
     value: 1,
@@ -112,7 +107,6 @@ const items = [
     name: '女士',
   },
 ]
-const current = ref(0)
 const options = [
   {
     name: '公司',
@@ -276,7 +270,7 @@ const addAddress = async () => {
     }
   } else {
     delete params.id
-    console.log('params with label!!!!!!', params)
+    console.log('add params with label!', params)
     const res = await addAddressAPI(params)
     if (res.code === 0) {
       uni.redirectTo({

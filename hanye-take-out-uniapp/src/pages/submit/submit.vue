@@ -126,27 +126,6 @@
         </view>
       </view>
     </view>
-
-    <!-- <view class="pop_mask" v-show="openPayType">
-      <view class="pop">？？？餐具 </view>
-    </view> -->
-
-    <!-- 已有人支付弹窗 - start -->
-    <!-- <view class="pop_mask" v-show="openPayType">
-      <view class="pop">
-        <view class="open_table_cont">
-          <view class="cont_icon">
-            <image class="cont_icon_img" src="../../static/unable_pay.png"></image>
-          </view>
-          <view class="cont_tit"> 该餐桌在支付途中 </view>
-          <view class="cont_desc"> 请勿重复支付 </view>
-        </view>
-        <view class="butList">
-          <view class="define" @click="closeMask()"> 知道了 </view>
-        </view>
-      </view>
-    </view> -->
-    <!-- 已有人支付弹窗 - end -->
   </view>
 </template>
 
@@ -178,7 +157,6 @@ const phoneNumber = ref('')
 const estimatedDeliveryTime = ref('')
 
 const platform = ref('ios')
-const openPayType = ref(false)
 
 const openCooker = ref(false)
 const cookerNum = ref(-2)
@@ -186,12 +164,9 @@ const cookers = ref([-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
 
 const radioStatus = ref(false)
 
-const psersonUrl = ref('../../static/btn_waiter_sel.png')
 const remark = ref('')
 const arrivalTime = ref('')
 const addressId = ref(0)
-// 使用 reactive 创建响应式对象
-const orderDishNumber = ref(0)
 
 // 查询获取购物车列表
 const getCartList = async () => {
@@ -318,16 +293,13 @@ const goAddress = () => {
 
 // 去备注页面
 const goRemark = () => {
-  console.log('去啊！！！')
   uni.redirectTo({
     url: '/pages/remark/remark',
   })
 }
 // 选择餐具
 const chooseCooker = () => {
-  console.log('选择餐具啊！！！')
   openCooker.value = true
-  // openPayType.value = true
 }
 // 餐具对应信息
 const getCookerInfo = () => {

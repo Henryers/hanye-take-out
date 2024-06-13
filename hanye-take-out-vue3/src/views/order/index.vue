@@ -87,9 +87,6 @@ watch(orderStatics, (newValue) => {
   changedOrderList[1].num = newValue && newValue.toBeConfirmed
   changedOrderList[2].num = newValue && newValue.confirmed
   changedOrderList[3].num = newValue && newValue.deliveryInProgress
-  // 监视到更改倒是刷新页面啊
-  // init(activeIndex.value)
-  // getOrderListBy3Status()
 })
 
 const tabChange = (index: number) => {
@@ -305,7 +302,7 @@ const getOrderType = (row: any) => {
 }
 
 
-// 逆天init，还得在mounted里面再执行一遍，获取订单统计才行！
+// init不够，还得在mounted里面再执行一遍，获取订单统计才行！
 init(Number(route.query.status) || 0)
 onMounted(async () => {
   if (route.query.status) {

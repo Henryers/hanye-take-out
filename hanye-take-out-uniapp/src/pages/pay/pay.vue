@@ -93,7 +93,7 @@ const timeup = () => {
     clearInterval(countdownStore.timer)
   }
   countdownStore.timer = setInterval(() => {
-    console.log('什么timer!!!', countdownStore.timer)
+    console.log('什么timer？', countdownStore.timer)
     console.log('看看是不是一秒执行一次', orderTime.value)
     // 订单下单时间
     let buy_time = new Date(orderTime.value as Date).getTime()
@@ -111,7 +111,7 @@ const timeup = () => {
       var s = (time / 1000) % 60
       console.log('s', s)
       timeupSecond.value = time / 1000
-      console.log('timeupSecond小于0，怎么不会执行后面的停止！！！', timeupSecond.value)
+      console.log('timeupSecond小于0？', timeupSecond.value)
       countdownStore.showM = Math.floor(m)
       countdownStore.showS = Math.floor(s)
       // showTime.value = minutes.value + ':' + seconds.value
@@ -130,9 +130,8 @@ const timeup = () => {
   }, 1000)
 }
 
-// 跳转到这个订单的详情页面
+// 超时要取消订单
 const cancelOrder = async () => {
-  // 超时要先取消订单
   await cancelOrderAPI(orderId.value)
   // uni.redirectTo({
   //   url: '/pages/orderDetail/orderDetail?orderId=' + orderId.value,

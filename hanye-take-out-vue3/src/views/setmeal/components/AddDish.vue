@@ -120,11 +120,11 @@ const checkTypeHandle = (ind: number, id: number) => {
   // ind 是当前点击的菜品分类的索引，id 是当前点击的菜品分类的categoryId
   console.log('点击了左侧菜品分类，看看点了啥', ind, id)
   keyInd.value = ind
-  // 先清空啊（不然还保留上一个页面的数据），再去拿到当前点击的菜品分类下的菜品列表dishList
+  // 先清空（不然还保留上一个页面的数据），再去拿到当前点击的菜品分类下的菜品列表dishList
   // 清空写在getDishList里
   getDishList(id)
   console.log('看看dishList', dishList.value)
-  console.log('如果是空，长度应该是0啊！为什么不显示Empty组件！！！', dishList.value.length)
+  console.log('如果是空，长度应该是0', dishList.value.length)
 }
 
 // 使用setup语法糖的话要先引入defineEmits来定义
@@ -168,7 +168,7 @@ const checkedListHandle = (value: [string]) => {
       }
     })
   }
-  // 加个dishId名，和后端名称对应！
+  // 加个dishId名，和后端名称对应
   checkedListAll.value.forEach((n: any) => {
     n.dishId = n.id
   })

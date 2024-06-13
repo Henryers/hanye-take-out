@@ -225,22 +225,6 @@ const getCartList = async () => {
   }
 }
 
-// 无口味可选，直接加入购物车
-const addDishToCart = async (dish: DishItem | SetmealItem) => {
-  console.log('addDishToCart---------------------------------------------------', dish)
-  console.log(categoryList.value[activeIndex.value].sort < 20)
-  if (categoryList.value[activeIndex.value].sort < 20) {
-    const partialCart: Partial<CartDTO> = {dishId: dish.id}
-    await addToCartAPI(partialCart)
-  } else {
-    const partialCart: Partial<CartDTO> = {setmealId: dish.id}
-    await addToCartAPI(partialCart)
-  }
-  // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
-  await getCartList()
-  // getCopies(dish)
-}
-
 // 只有菜品才要选择规格/口味(多种口味规格数据处理)
 const chooseNorm = async (dish: DishItem) => {
   console.log('点击了选择规格chooseNorm，得到了该菜品的所有口味数据', dish.flavors)
@@ -345,8 +329,6 @@ const addDishAction = async (item: any, form: string) => {
       dishFlavor: item.dishFlavor,
     }
     await addToCartAPI(partialCart)
-    // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
-    await getCartList()
   } else {
     // 2、dishItem无dishId、setmealId两个属性，因此得判断
     console.log('普通页面下的dish，点击能直接添加(而不弹出dialog)的菜品说明无口味', item)
@@ -357,10 +339,11 @@ const addDishAction = async (item: any, form: string) => {
       const partialCart: Partial<CartDTO> = {setmealId: item.id}
       await addToCartAPI(partialCart)
     }
-    // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
-    await getCartList()
   }
+  // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
+  await getCartList()
 }
+
 // "-"按钮，form: 购物车/普通视图中的按钮
 const subDishAction = async (item: any, form: string) => {
   console.log('点击了减少菜品数量按钮subDishAction--------------------', item, form)
@@ -373,8 +356,6 @@ const subDishAction = async (item: any, form: string) => {
       dishFlavor: item.dishFlavor,
     }
     await subCartAPI(partialCart)
-    // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
-    await getCartList()
   } else {
     // 2、dishItem无dishId、setmealId两个属性，因此得判断
     console.log('普通页面下的dish，不是dialog中的菜品说明无口味', item)
@@ -385,9 +366,9 @@ const subDishAction = async (item: any, form: string) => {
       const partialCart: Partial<CartDTO> = {setmealId: item.id}
       await subCartAPI(partialCart)
     }
-    // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
-    await getCartList()
   }
+  // 数据库更新，所以拿到新的购物车列表(cartList)，页面才能跟着刷新
+  await getCartList()
 }
 
 // 清空购物车

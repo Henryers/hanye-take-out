@@ -151,7 +151,6 @@ const statusList = [
 ]
 
 const countdownStore = useCountdownStore()
-const {showM, showS} = countdownStore
 
 const order = reactive<OrderVO>({
   id: 0, // 订单id

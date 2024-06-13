@@ -101,7 +101,7 @@ export const updateEmployeeAPI = (params: any) => {
  * @returns 
  */
 export const updateEmployeeStatusAPI = (id: number) => {
-  console.log('发请求啊！', id)
+  console.log('员工id', id)
   return request({
     url: `/employee/status/${id}`,
     method: 'put'

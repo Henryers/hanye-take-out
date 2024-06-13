@@ -190,32 +190,12 @@ const quitFn = () => {
     })
 }
 
-
-// import { getStatus, setStatus } from '@/api/users'
-// import Cookies from 'js-cookie'
-
-// 接口
-// import { getCountUnread } from '@/api/inform'
-
 // refs
 const websocket = ref<WebSocket | null>(null)
 const shopShow = ref(false)
 
 const audio1 = ref<HTMLAudioElement | null>(null)
 const audio2 = ref<HTMLAudioElement | null>(null)
-
-// const getCountUnread = async () => {
-//   const { data } = await getCountUnread()
-//   if (data.code === 1) {
-//     AppModule.StatusNumber(data.data)
-//   } else {
-//     ElNotification({
-//       title: '错误',
-//       message: data.msg,
-//       type: 'error',
-//     })
-//   }
-// }
 
 const webSocket = () => {
   const clientId = Math.random().toString(36).slice(2)

@@ -50,24 +50,12 @@ init()  // 页面初始化，写在这里时的生命周期是beforecreated/crea
 // 监听翻页和每页显示数量的变化
 const handleCurrentChange = (val: number) => {
   pageData.page = val
-  // 根据输入框是否有值/进行了查询，来决定是所有歌曲还是查询后的列表
   init()
-  // if (input.value) {
-  //   search_btn()
-  // } else {
-  //   showMusicList()
-  // }
 }
 
 const handleSizeChange = (val: number) => {
   pageData.pageSize = val
-  // 根据输入框是否有值/进行了查询，来决定是所有歌曲还是查询后的列表
   init()
-  // if (input.value) {
-  //   search_btn()
-  // } else {
-  //   showMusicList()
-  // }
 }
 
 // 修改员工(路径传参，到update页面后，根据id查询员工信息，回显到表单中)

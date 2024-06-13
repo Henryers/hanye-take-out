@@ -120,12 +120,6 @@
 				"iconPath": "static/tabs/home_default.png",
 				"selectedIconPath": "static/tabs/home_selected.png"
 			},
-			// {
-			// 	"text": "分类",
-			// 	"pagePath": "pages/category/category",
-			// 	"iconPath": "static/tabs/category_default.png",
-			// 	"selectedIconPath": "static/tabs/category_selected.png"
-			// },
 			{
 				"text": "我的",
 				"pagePath": "pages/my/my",

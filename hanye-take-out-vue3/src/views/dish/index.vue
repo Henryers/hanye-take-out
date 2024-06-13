@@ -88,19 +88,7 @@ const handleSizeChange = (val: number) => {
 
 const multiTableRef = ref<InstanceType<typeof ElTable>>()
 const multiSelection = ref<dish[]>([])
-// const toggleSelection = (rows?: dish[]) => {
-//   if (rows) {
-//     rows.forEach((row) => {
-//       // TODO: improvement typing when refactor table
-//       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//       // @ts-expect-error
-//       multiTableRef.value!.toggleRowSelection(row, undefined)
-//       console.log('multiSelection.value', multiSelection.value)
-//     })
-//   } else {
-//     multiTableRef.value!.clearSelection()
-//   }
-// }
+
 const handleSelectionChange = (val: dish[]) => {
   multiSelection.value = val
   console.log('value', val)
@@ -189,36 +177,6 @@ const deleteBatch = (row?: any) => {
       })
     })
 }
-// const deleteBatch = (val: dish[]) => {
-//   console.log('要删除的行数据')
-//   console.log(row)
-//   ElMessageBox.confirm(
-//     '是否永久删除所选菜品？',
-//     'Warning',
-//     {
-//       confirmButtonText: 'OK',
-//       cancelButtonText: 'Cancel',
-//       type: 'warning',
-//     }
-//   )
-//     .then(async () => {
-//       console.log('要删除的行数据')
-//       console.log(val)
-//       await deleteDishesAPI(row.id)
-//       // 删除后刷新页面，更新数据
-//       init()
-//       ElMessage({
-//         type: 'success',
-//         message: '删除成功',
-//       })
-//     })
-//     .catch(() => {
-//       ElMessage({
-//         type: 'info',
-//         message: '取消删除',
-//       })
-//     })
-// }
 </script>
 
 <template>

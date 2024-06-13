@@ -9,10 +9,6 @@
     >
       <text class="name"> {{ item.name }} </text>
     </view>
-    <!-- <view class="history_title" :class="{active:" }>全部订单</view> -->
-    <!-- <view class="history_title">待付款</view>
-    <view class="history_title">已完成</view>
-    <view class="history_title">已取消</view> -->
   </view>
   <view class="blank"></view>
   <view class="history_content">
@@ -113,10 +109,6 @@ const statusList = [
 
 const activeIndex = ref(0)
 const historyOrders = ref<OrderVO[]>([])
-// const orderNumber = ref('')
-// const orderAmount = ref(0)
-// const orderTime = ref('')
-// const orderStatus = ref(0)
 const orderDTO = ref<OrderPageDTO>({
   page: 1,
   pageSize: 6,

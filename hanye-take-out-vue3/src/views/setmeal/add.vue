@@ -138,8 +138,6 @@ const cancel = () => {
   })
 }
 
-
-
 // 点击搜索按钮，才把当前搜索框的内容作为搜索关键字，否则value一直动态变化
 // 如果不用searchKey，直接用value，那么每次输入框的值变化，都会触发搜索，无法暂存中间变量
 const searchHandle = () => {
@@ -191,7 +189,6 @@ const addTableList = () => {
 const submit = async (keep: any) => {
   console.log('keep,为空就是新增', keep)
   console.log('add提交表单，需要先将dishTable赋值给form.setmealDishes')
-  console.log('form.setmealDishes', form.setmealDishes)
   console.log('dishTable', dishTable.value)
   console.log('selectList', selectList)
   console.log('form', form)

@@ -12,8 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import {getCartAPI} from '@/api/cart'
-import {onLoad, onShow} from '@dcloudio/uni-app'
+import {onLoad} from '@dcloudio/uni-app'
 import {ref} from 'vue'
 
 const orderId = ref(0)

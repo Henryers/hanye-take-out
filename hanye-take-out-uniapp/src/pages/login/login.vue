@@ -1,23 +1,17 @@
 <template>
   <view class="viewport">
     <view class="logo">
-      <image src="https://pcapi-xiaotuxian-front-devtest.itheima.net/miniapp/images/logo_icon.png"></image>
+      <image src="@/static/images/login.png"></image>
     </view>
     <view class="login">
       <!-- 小程序端授权登录 -->
-      <button class="button phone" @tap="login">
-        <text class="icon icon-phone"></text>
-        微信快捷登录
-      </button>
+      <button class="button" @tap="login">微信快捷登录</button>
       <view class="extra">
         <view class="caption">
           <text>其他登录方式</text>
         </view>
         <view class="options">
-          <!-- 通用模拟登录 -->
-          <button>
-            <text class="icon icon-phone">模拟快捷登录</text>
-          </button>
+          <button class="small_btn" @tap="tips">模拟快捷登录</button>
         </view>
       </view>
       <view class="tips">登录/注册即视为你同意《服务条款》和《寒夜外卖隐私协议》</view>
@@ -26,10 +20,10 @@
 </template>
 
 <script lang="ts" setup>
-import { loginAPI } from '@/api/login'
-import { onLoad } from '@dcloudio/uni-app'
-import { useUserStore } from '@/stores/modules/user'
-import type { LoginResult } from '@/types/user'
+import {loginAPI} from '@/api/login'
+import {onLoad} from '@dcloudio/uni-app'
+import {useUserStore} from '@/stores/modules/user'
+import type {LoginResult} from '@/types/user'
 
 // 先调用wx.login()，获取 code 登录凭证
 let code = ''
@@ -53,11 +47,19 @@ const loginSuccess = (profile: LoginResult) => {
   const userStore = useUserStore()
   userStore.setProfile(profile)
   // 成功提示
-  uni.showToast({ icon: 'success', title: '登录成功' })
+  uni.showToast({icon: 'success', title: '登录成功'})
   setTimeout(() => {
     // 页面跳转
-    uni.switchTab({ url: '/pages/my/my' })
+    uni.switchTab({url: '/pages/my/my'})
   }, 500)
+}
+
+const tips = async () => {
+  // 模拟登录
+  uni.showToast({
+    title: '司辰，直接微信快捷登录就好哦~',
+    icon: 'none',
+  })
 }
 </script>
 
@@ -108,20 +110,8 @@ page {
     height: 80rpx;
     font-size: 28rpx;
     border-radius: 72rpx;
+    background-color: #22ccff;
     color: #fff;
-
-    .icon {
-      font-size: 40rpx;
-      margin-right: 6rpx;
-    }
-  }
-
-  .phone {
-    background-color: #28bb9c;
-  }
-
-  .wechat {
-    background-color: #06c05f;
   }
 
   .extra {
@@ -155,31 +145,14 @@ page {
         padding: 0;
         background-color: transparent;
       }
-    }
-
-    .icon {
-      font-size: 24rpx;
-      color: #444;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      &::before {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 80rpx;
+      .small_btn {
+        width: 300rpx;
         height: 80rpx;
-        margin-bottom: 6rpx;
-        font-size: 40rpx;
-        border: 1rpx solid #444;
-        border-radius: 50%;
+        font-size: 28rpx;
+        border-radius: 72rpx;
+        color: #22ccff;
+        border: #22ccff solid 1rpx;
       }
-    }
-
-    .icon-weixin::before {
-      border-color: #06c05f;
-      color: #06c05f;
     }
   }
 }

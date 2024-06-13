@@ -1,15 +1,5 @@
 <template>
   <view class="customer-box">
-    <!-- <uni-nav-bar
-      @clickLeft="goBack"
-      left-icon="back"
-      leftIcon="arrowleft"
-      title="地址管理"
-      statusBar="true"
-      fixed="true"
-      color="#ffffff"
-      backgroundColor="#333333"
-    ></uni-nav-bar> -->
     <view class="address" :style="{height: `calc(100% - 136rpx - ${statusBarHeight} - 44px - 20rpx)`}">
       <view v-if="addressList && addressList.length > 0" class="address_content">
         <!-- address列表 -->
@@ -75,14 +65,12 @@ import {ref, onMounted, computed} from 'vue'
 import {getAddressListAPI, updateDefaultAddressAPI} from '@/api/address'
 import type {Address} from '@/types/address'
 import {useAddressStore} from '@/stores/modules/address'
-// import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue'
 import Empty from '@/components/empty/Empty.vue'
 
 const store = useAddressStore()
 
 const testValue = ref(true)
 const addressList = ref<Address[]>([])
-const formRouter = ref('')
 const addressBackUrl = store.addressBackUrl
 const statusBarHeight = computed(() => uni.getSystemInfoSync().statusBarHeight + 'px')
 

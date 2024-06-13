@@ -19,7 +19,7 @@
       <text class="price">配送费6元</text>
     </view>
     <view class="info2">
-      <text class="address">餐厅地址：广东省广州市天河区天河路208号</text>
+      <text class="address">餐厅地址：广州市番禺区亚运城广场</text>
       <uni-icons @click="phone" custom-prefix="iconfont" type="icon-dianhua" size="20"></uni-icons>
     </view>
   </view>

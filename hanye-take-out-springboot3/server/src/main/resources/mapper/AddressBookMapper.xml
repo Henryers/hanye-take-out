@@ -24,6 +24,24 @@
             <if test="isDefault != null">
                 is_default = #{isDefault},
             </if>
+            <if test="provinceCode != null">
+                province_code = #{provinceCode},
+            </if>
+            <if test="provinceName != null">
+                province_name = #{provinceName},
+            </if>
+            <if test="cityCode != null">
+                city_code = #{cityCode},
+            </if>
+            <if test="cityName != null">
+                city_name = #{cityName},
+            </if>
+            <if test="districtCode != null">
+                district_code = #{districtCode},
+            </if>
+            <if test="districtName != null">
+                district_name = #{districtName},
+            </if>
         </set>
         where id = #{id}
     </update>

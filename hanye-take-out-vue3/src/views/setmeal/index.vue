@@ -88,19 +88,7 @@ const handleSizeChange = (val: number) => {
 
 const multiTableRef = ref<InstanceType<typeof ElTable>>()
 const multiSelection = ref<setmeal[]>([])
-// const toggleSelection = (rows?: setmeal[]) => {
-//   if (rows) {
-//     rows.forEach((row) => {
-//       // TODO: improvement typing when refactor table
-//       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//       // @ts-expect-error
-//       multiTableRef.value!.toggleRowSelection(row, undefined)
-//       console.log('multiSelection.value', multiSelection.value)
-//     })
-//   } else {
-//     multiTableRef.value!.clearSelection()
-//   }
-// }
+
 const handleSelectionChange = (val: setmeal[]) => {
   multiSelection.value = val
   console.log('value', val)
