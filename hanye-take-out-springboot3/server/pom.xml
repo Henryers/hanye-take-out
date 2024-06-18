@@ -3,30 +3,31 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>fun.cyhgraph</groupId>
+        <artifactId>hanye-take-out</artifactId>
+        <version>1.0-SNAPSHOT</version>
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-starter-parent</artifactId>-->
+<!--        <version>3.2.5</version>-->
+<!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
-    <groupId>fun.cyhgraph</groupId>
+
     <artifactId>server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>server</name>
-    <description>server</description>
+
     <properties>
         <java.version>17</java.version>
     </properties>
     <dependencies>
         <!--子模块-->
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>fun.cyhgraph</groupId>
             <artifactId>common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>fun.cyhgraph</groupId>
             <artifactId>pojo</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -150,14 +151,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>

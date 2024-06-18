@@ -6,10 +6,9 @@
     <parent>
         <groupId>fun.cyhgraph</groupId>
         <artifactId>hanye-take-out</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.example</groupId>
     <artifactId>pojo</artifactId>
 
     <properties>
