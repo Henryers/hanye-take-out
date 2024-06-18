@@ -1,0 +1,32 @@
+swiper.data-v-83a5a03c {
+  width: 100%;
+  height: calc(100vw * 360 / 810);
+}
+swiper image.data-v-83a5a03c {
+  width: 100%;
+}
+.container.data-v-83a5a03c {
+  margin: 20rpx 80rpx 300rpx 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+image.data-v-83a5a03c {
+  margin-top: 40rpx;
+  width: 300rpx;
+  height: 300rpx;
+  text-align: center;
+}
+.title.data-v-83a5a03c {
+  width: 300rpx;
+  height: 80rpx;
+  background-color: #00aaff;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  margin-top: 20rpx;
+}

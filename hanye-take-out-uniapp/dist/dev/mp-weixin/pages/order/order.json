@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "点餐",
+  "usingComponents": {
+    "navbar": "./components/Navbar"
+  }
+}

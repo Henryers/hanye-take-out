@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "支付订单",
+  "usingComponents": {
+    "uni-countdown": "../../node-modules/@dcloudio/uni-ui/lib/uni-countdown/uni-countdown"
+  }
+}

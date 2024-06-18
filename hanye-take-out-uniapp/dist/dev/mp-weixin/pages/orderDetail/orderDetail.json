@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "订单详情",
+  "usingComponents": {
+    "uni-countdown": "../../node-modules/@dcloudio/uni-ui/lib/uni-countdown/uni-countdown",
+    "push-msg": "../../components/message/pushMsg"
+  }
+}

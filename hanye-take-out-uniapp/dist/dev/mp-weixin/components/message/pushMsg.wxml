@@ -1,0 +1,1 @@
+<uni-popup wx:if="{{c}}" class="r" u-s="{{['d']}}" u-r="popup" u-i="54d005a0-0" bind:__l="__l" u-p="{{c}}"><view class="pop"><view class="title"> 温馨提示 </view><view class="tip-img"><image src="/static/images/success.png"></image></view><view class="tip-info"> 37已成功帮你催单~ </view><view class="sure" bindtap="{{a}}"> 确定 </view></view></uni-popup>

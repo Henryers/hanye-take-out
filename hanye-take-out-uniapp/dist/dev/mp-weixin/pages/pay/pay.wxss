@@ -1,0 +1,74 @@
+.pay_box.data-v-8a6251df {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+.pay_box .time.data-v-8a6251df {
+  display: flex;
+  margin-top: 100rpx;
+  color: #888;
+  font-size: 28rpx;
+}
+.pay_box .price.data-v-8a6251df {
+  font-size: 80rpx;
+  font-weight: bold;
+  margin-top: 20rpx;
+}
+.pay_box .shop.data-v-8a6251df {
+  display: flex;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #888;
+}
+.pay_box .wechat.data-v-8a6251df {
+  display: flex;
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin: 100rpx 20rpx;
+  position: relative;
+}
+.pay_box .wechat .pay.data-v-8a6251df {
+  width: 40rpx;
+  height: 40rpx;
+  padding: 20rpx;
+}
+.pay_box .wechat .choose.data-v-8a6251df {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  top: 20rpx;
+  right: 20rpx;
+}
+.bottom.data-v-8a6251df {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottom .comfirm_btn.data-v-8a6251df {
+  position: absolute;
+  bottom: 30rpx;
+  width: 600rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  background: #00aaff;
+  border: none;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+
+page {
+  background-color: #f8f8f8;
+}

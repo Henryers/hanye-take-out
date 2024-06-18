@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的",
+  "usingComponents": {
+    "push-msg": "../../components/message/pushMsg"
+  }
+}

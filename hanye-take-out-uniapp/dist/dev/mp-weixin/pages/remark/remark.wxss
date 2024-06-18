@@ -1,0 +1,49 @@
+.uni-textarea.data-v-cc1c9952 {
+  margin: 30rpx;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+  width: 690rpx;
+  height: 300rpx;
+  opacity: 1;
+  background: #eee;
+  border-radius: 12rpx;
+  padding-top: 20rpx;
+  font-size: 26rpx;
+}
+.uni-textarea .remark_text.data-v-cc1c9952 {
+  line-height: 60rpx;
+  height: 200rpx;
+}
+.uni-textarea .fifty.data-v-cc1c9952 {
+  color: #bbbbbb;
+}
+.add_address.data-v-cc1c9952 {
+  position: fixed;
+  bottom: 0rpx;
+  left: 0;
+  margin: 0 auto;
+  background: #ffffff;
+  height: 136rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 750rpx;
+}
+.add_address .add_btn.data-v-cc1c9952 {
+  width: 668rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  border-radius: 72rpx;
+  background: #ffc200;
+  border: 1px solid #ffc200;
+  opacity: 1;
+  font-size: 30rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 500;
+  text-align: center;
+  color: #333333;
+  letter-spacing: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
