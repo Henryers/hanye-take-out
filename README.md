@@ -1,6 +1,8 @@
 # 寒页外卖（苍穹外卖套壳升级版）
 
-b站项目演示：https://www.bilibili.com/video/BV1SM4m1U7eR
+b站项目演示：[寒页外卖](https://www.bilibili.com/video/BV1SM4m1U7eR)
+
+![image](image/theme.png)
 
 
 
@@ -18,7 +20,8 @@ nodejs版本： 20.11.1   （最好不要低于16）
 
 版本：JDK17  maven 3.9.6
 
-> 由于我用的是springboot3.2.5，因此JDK版本要17以上才能适配，如果用的是 JDK8 或者 11，建议直接看黑马的视频，他们用的是springboot 2.7.3
+> 由于我用的是springboot3.2.5，因此JDK版本要17以上才能适配
+> 如果用的是 JDK8 或者 11，建议直接看黑马的视频，他们用的是springboot 2.7.3
 
 
 
@@ -26,9 +29,25 @@ nodejs版本： 20.11.1   （最好不要低于16）
 
 下载完源代码并分别在 vscode 和 IDEA 打开项目
 
+**Java后端**
+
 根据sql文件创建数据库和建表，在 IDEA 中连接数据库
 
+**前端网页**
+
 vue3脚手架可以看vue官网创建，建好脚手架再将我的代码导入工程，相关的npm包需要 npm i 进行安装
+
+终端中运行 `npm run dev` 启动前端网页项目
+
+**微信小程序**
+
+相关的npm包需要 `npm i` 进行安装
+
+需要在微信开发者工具中导入 `hanye-take-out-uniapp/dist/mp-weixin` 这部分内容
+
+要编译的话需要 `npm run dev:mp-weixin`，之后修改uniapp的内容时，微信开发者工具里编译好的内容也会相应作出修改
+
+**其他**
 
 其他后端配置基本和苍穹外卖差不多，大家可以参照黑马的教程
 
