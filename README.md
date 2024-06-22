@@ -6,15 +6,15 @@ b站项目演示：[寒页外卖](https://www.bilibili.com/video/BV1SM4m1U7eR)
 
 
 
-## 技术选型
+## 一、技术选型
 
-**前端**
+### 前端
 
 `vue3`   `ts`   `uniapp`   `pinia`   `elementPlus`   `ECharts`
 
 nodejs版本： 20.11.1   （最好不要低于16）
 
-**后端**
+### 后端
 
 `springboot3`  `mybatis`  `redis`
 
@@ -23,9 +23,25 @@ nodejs版本： 20.11.1   （最好不要低于16）
 > 由于我用的是springboot3.2.5，因此JDK版本要17以上才能适配
 > 如果用的是 JDK8 或者 11，建议直接看黑马的视频，他们用的是springboot 2.7.3
 
+### 接口文档
 
+使用 `Apifox` 进行管理，相比 `Swagger` 配置更简单；
 
-## 使用步骤
+Apifox = Postman + Swagger + Mock + Jmeter，功能更丰富强大
+
+![image](image/apifox.png)
+
+[官方文档教程]([Apifox IDEA 插件快速上手 | Apifox 帮助文档](https://apifox.com/help/applications-and-plugins/idea/start))
+
+[b站教程](https://www.bilibili.com/video/BV1Jc41147xC)
+
+我利用了 IDEA 里的插件 Apifox Helper
+
+优点是可以通过右键点击 Upload to Apifox 快速生成接口文档
+
+缺点是 如果管理端和用户端的controller相同时，其中的接口会被合到同一级目录中，无法分开，而且我在插件设置里只找到server模块和apifox的项目根目录对应，无法进行细分来分别选择admin user两个模块对应两个接口文档，网上也找不到相关教程，希望有大佬可以帮我解决这个问题。
+
+## 二、使用步骤
 
 下载完源代码并分别在 vscode 和 IDEA 打开项目
 
@@ -55,7 +71,7 @@ vue3脚手架可以看vue官网创建，建好脚手架再将我的代码导入�
 
 
 
-## 前端代码说明
+## 三、前端代码说明
 
 ### vue3网页代码结构
 
@@ -151,7 +167,7 @@ vue3脚手架可以看vue官网创建，建好脚手架再将我的代码导入�
 
 
 
-## 后端代码说明
+## 四、后端代码说明
 
 ### Jakarta
 
