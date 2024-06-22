@@ -31,15 +31,15 @@ Apifox = Postman + Swagger + Mock + Jmeter，功能更丰富强大
 
 ![image](image/apifox.png)
 
-[官方文档教程]([Apifox IDEA 插件快速上手 | Apifox 帮助文档](https://apifox.com/help/applications-and-plugins/idea/start))
+[官方文档教程：Apifox IDEA 插件快速上手 | Apifox 帮助文档](https://apifox.com/help/applications-and-plugins/idea/start)
 
-[b站教程](https://www.bilibili.com/video/BV1Jc41147xC)
+[b站：2024 Apifox 最新教程](https://www.bilibili.com/video/BV1Jc41147xC)
 
-我利用了 IDEA 里的插件 Apifox Helper
+我使用了 IDEA 里的插件 Apifox Helper 来和 Apifox 进行关联，没有进行 Swagger 的相关配置
 
-优点是可以通过右键点击 Upload to Apifox 快速生成接口文档
+优点：可以通过右键点击 Upload to Apifox 快速生成接口文档
 
-缺点是 如果管理端和用户端的controller相同时，其中的接口会被合到同一级目录中，无法分开，而且我在插件设置里只找到server模块和apifox的项目根目录对应，无法进行细分来分别选择admin user两个模块对应两个接口文档，网上也找不到相关教程，希望有大佬可以帮我解决这个问题。
+缺点：如果管理端和用户端的controller相同时，其中的接口会被合到同一级目录中，无法分开，而且我在插件设置里只找到server模块和apifox的项目根目录对应，无法进行细分来分别选择admin user两个模块对应两个接口文档，网上也找不到相关教程，希望有大佬可以帮我解决这个问题。
 
 ## 二、使用步骤
 
