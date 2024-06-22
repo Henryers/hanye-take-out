@@ -29,6 +29,8 @@ nodejs版本： 20.11.1   （最好不要低于16）
 
 Apifox = Postman + Swagger + Mock + Jmeter，功能更丰富强大
 
+[寒页外卖接口文档](https://apifox.com/apidoc/shared-39879d22-3c07-4af9-886a-712138f228b2)
+
 ![image](image/apifox.png)
 
 [官方文档教程：Apifox IDEA 插件快速上手 | Apifox 帮助文档](https://apifox.com/help/applications-and-plugins/idea/start)
