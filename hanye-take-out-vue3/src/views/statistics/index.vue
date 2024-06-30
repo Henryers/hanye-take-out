@@ -14,7 +14,6 @@ import {
   pastMonth,
 } from '@/utils/date'
 import {
-  getDataOverViewAPI,
   getTurnoverStatisticsAPI,
   getUserStatisticsAPI,
   getOrderStatisticsAPI,
