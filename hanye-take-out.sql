@@ -1,9 +1,8 @@
-show databases;
-
 create database hanye_take_out;
 use hanye_take_out;
 
 -- 1、后台管理员工
+drop table if exists employee;
 create table employee(
     id int primary key auto_increment,
     name varchar(64) not null default '员工',
@@ -19,10 +18,9 @@ create table employee(
     create_time datetime not null default now(),
     update_time datetime not null default now()
 );
-drop table employee;
-update employee set account = 'cyh' where id = 4;
 
 -- 2、分类：包括菜品分类和套餐分类，即小程序侧边栏
+drop table if exists category;
 create table category(
     id int primary key auto_increment,
     name varchar(64) unique not null,
@@ -34,9 +32,9 @@ create table category(
     create_time datetime not null default now(),
     update_time datetime not null default now()
 );
-drop table category;
 
 -- 3、菜品
+drop table if exists dish;
 create table dish(
     id int primary key auto_increment,
     name varchar(64) unique not null,
@@ -51,9 +49,9 @@ create table dish(
     update_time datetime not null default now(),
     constraint fk_dish_category foreign key (category_id) references category (id) on update cascade on delete cascade
 );
-drop table dish;
 
 -- 4、菜品口味
+drop table if exists dish_flavor;
 create table dish_flavor(
     id int primary key auto_increment,
     name varchar(64) not null,   -- eg. 温度
@@ -62,6 +60,7 @@ create table dish_flavor(
 );
 
 -- 5、套餐
+drop table if exists setmeal;
 create table setmeal(
     id int primary key auto_increment,
     name varchar(64) unique not null,
@@ -76,9 +75,9 @@ create table setmeal(
     update_time datetime not null default now(),
     constraint fk_setmeal_category foreign key (category_id) references category(id) on update cascade on delete cascade
 );
-drop table setmeal;
 
 -- 6、菜品套餐中间表(因为菜品套餐是 多对多 关系)
+drop table if exists setmeal_dish;
 create table setmeal_dish(
     id int primary key auto_increment,
     name varchar(64) not null,
@@ -89,10 +88,9 @@ create table setmeal_dish(
     constraint fk_between_dish foreign key (dish_id) references dish(id) on update cascade on delete cascade,
     constraint fk_between_setmeal foreign key (setmeal_id) references setmeal(id) on update cascade on delete cascade
 );
-drop table setmeal_dish;
-
 
 -- 7、微信小程序用户表
+drop table if exists user;
 create table user(
     id int primary key auto_increment,
     name varchar(64) null,
@@ -103,9 +101,9 @@ create table user(
     pic longtext null,
     create_time datetime not null
 );
-drop table user;
 
 -- 8、订单明细表
+drop table if exists order_detail;
 create table order_detail (
     id bigint not null auto_increment comment '主键',
     name varchar(32) default null comment '名字',
@@ -118,9 +116,9 @@ create table order_detail (
     amount decimal(10,2) not null comment '金额',
     primary key (id)
 ) comment='订单明细表';
-drop table if exists order_detail;
 
 -- 9、订单表
+drop table if exists orders;
 create table orders (
     id bigint not null auto_increment comment '主键',
     number varchar(50) default null comment '订单号',
@@ -148,9 +146,9 @@ create table orders (
     tableware_status tinyint(1) not null default '1' comment '餐具数量状态  1按餐量提供  0选择具体数量',
     primary key (id)
 ) comment='订单表';
-drop table if exists orders;
 
 -- 10、购物车
+drop table if exists cart;
 create table cart (
     id bigint not null auto_increment comment '主键',
     name varchar(32) null comment '商品名称',
@@ -164,9 +162,9 @@ create table cart (
     create_time datetime null comment '创建时间',
     primary key (id)
 ) comment='购物车';
-drop table if exists cart;
 
 -- 11、地址簿
+drop table if exists address_book;
 create table address_book (
     id bigint not null auto_increment comment '主键',
     user_id bigint not null comment '用户id',
@@ -184,4 +182,3 @@ create table address_book (
     is_default tinyint(1) not null default '0' comment '默认 0 否 1是',
     primary key (id)
 ) comment='地址簿';
-drop table if exists address_book;
