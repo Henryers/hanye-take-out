@@ -41,6 +41,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       console.log("options", options);
       if (options.address) {
         const addressObj = JSON.parse(options.address);
+        console.log("获取新的地址啊！addressObj", addressObj);
+        addressId.value = addressObj.id;
         label.value = addressObj.label;
         address.value = addressObj.provinceName + addressObj.cityName + addressObj.districtName + addressObj.detail;
         phoneNumber.value = addressObj.phone;
@@ -48,7 +50,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       } else if (options.remark) {
         remark.value = options.remark;
       }
-      console.log("address", address.value);
+      console.log("我地址id赋值了啊1-------------", addressId.value);
       await getCartList();
       getHarfAnOur();
       if (store.defaultCook === "无需餐具") {
@@ -175,6 +177,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         });
         return false;
       }
+      console.log("我传地址id了啊2--------------", addressId.value);
       const params = {
         payMethod: 1,
         addressId: addressId.value,

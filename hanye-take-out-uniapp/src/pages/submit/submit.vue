@@ -188,6 +188,8 @@ onLoad(async (options: any) => {
   console.log('options', options)
   if (options.address) {
     const addressObj = JSON.parse(options.address)
+    console.log('获取新的地址啊！addressObj', addressObj)
+    addressId.value = addressObj.id
     label.value = addressObj.label
     address.value = addressObj.provinceName + addressObj.cityName + addressObj.districtName + addressObj.detail
     phoneNumber.value = addressObj.phone
@@ -195,7 +197,7 @@ onLoad(async (options: any) => {
   } else if (options.remark) {
     remark.value = options.remark
   }
-  console.log('address', address.value)
+  console.log('我地址id赋值了啊1-------------', addressId.value)
   // 获取购物车列表
   await getCartList()
   // 获取一小时以后的时间，作为预计送达的时间
@@ -207,6 +209,7 @@ onLoad(async (options: any) => {
     cookerNum.value = 0
   }
 })
+
 onShow(async (options: any) => {
   console.log('options', options)
   await getCartList()
@@ -355,6 +358,7 @@ const payOrderHandle = async () => {
     })
     return false
   }
+  console.log('我传地址id了啊2--------------', addressId.value)
   const params = {
     payMethod: 1,
     addressId: addressId.value,

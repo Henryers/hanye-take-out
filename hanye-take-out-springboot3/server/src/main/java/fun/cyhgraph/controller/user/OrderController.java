@@ -28,7 +28,7 @@ public class OrderController {
      */
     @PostMapping("/submit")
     public Result<OrderSubmitVO> submit(@RequestBody OrderSubmitDTO orderSubmitDTO) {
-        log.info("用户传过来的订单信息：{}", orderSubmitDTO);
+        log.info("用户传过来的订单信息-------------------------：{}", orderSubmitDTO);
         OrderSubmitVO orderSubmitVO = orderService.submit(orderSubmitDTO);
         return Result.success(orderSubmitVO);
     }
