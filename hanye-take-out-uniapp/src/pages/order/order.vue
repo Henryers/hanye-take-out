@@ -501,6 +501,7 @@ onShow(async () => {
 }
 
 .viewport {
+  padding-top: 130px; // 上方为固定的简介栏，调整出一定高度来（不然不知道为啥fixed不占一段高度）
   height: 100%;
   display: flex;
   flex-direction: column;

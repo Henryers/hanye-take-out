@@ -1,29 +1,32 @@
 <template>
-  <!-- 顶部占位 -->
-  <view class="navbar" :style="{paddingTop: safeAreaInsets?.top + 'px'}">
-    <!-- logo文字 -->
-    <view class="logo">
-      <image class="back" src="@/static/icon/back.png" @tap="back"></image>
-      <image class="brand" src="@/static/images/logo.png"></image>
-      <text class="logo-text">REVERSE · 启动</text>
+  <!-- 20250428更新：顶部占位，不受下方滚动影响 -->
+  <view class="navbar-fixed">
+    <!-- 蓝色背景打底 -->
+    <view class="navbar" :style="{paddingTop: safeAreaInsets?.top + 'px'}">
+      <!-- logo文字 -->
+      <view class="logo">
+        <image class="back" src="@/static/icon/back.png" @tap="back"></image>
+        <image class="brand" src="@/static/images/logo.png"></image>
+        <text class="logo-text">REVERSE · 启动</text>
+      </view>
+      <view class="logo">
+        <text class="logo-text"></text>
+      </view>
     </view>
-    <view class="logo">
-      <text class="logo-text">blank</text>
+    <!-- 餐厅简介 -->
+    <view class="info">
+      <view class="info1">
+        <view class="status">{{ status === true ? '营业中' : '打烊中' }}</view>
+        <uni-icons custom-prefix="iconfont" type="icon-qian" size="15"></uni-icons>
+        <text class="price">配送费6元</text>
+      </view>
+      <view class="info2">
+        <text class="address">餐厅地址：广州市番禺区亚运城广场</text>
+        <uni-icons @click="phone" custom-prefix="iconfont" type="icon-dianhua" size="20"></uni-icons>
+      </view>
     </view>
+    <view class="blank"></view>
   </view>
-  <!-- 餐厅简介 -->
-  <view class="info">
-    <view class="info1">
-      <view class="status">{{ status === true ? '营业中' : '打烊中' }}</view>
-      <uni-icons custom-prefix="iconfont" type="icon-qian" size="15"></uni-icons>
-      <text class="price">配送费6元</text>
-    </view>
-    <view class="info2">
-      <text class="address">餐厅地址：广州市番禺区亚运城广场</text>
-      <uni-icons @click="phone" custom-prefix="iconfont" type="icon-dianhua" size="20"></uni-icons>
-    </view>
-  </view>
-  <view class="blank"></view>
 </template>
 
 <script setup lang="ts">
@@ -53,6 +56,15 @@ const phone = () => {
 </script>
 
 <style lang="less" scoped>
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 999;
+}
+
 /* 自定义导航条 */
 .navbar {
   background-image: url(@/static/images/navigator_bg.png);

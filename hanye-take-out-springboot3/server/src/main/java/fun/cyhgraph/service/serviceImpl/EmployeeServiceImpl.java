@@ -95,7 +95,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @param employeeDTO
      */
     public void update(EmployeeDTO employeeDTO) {
-        // 缺少时间等字段，需要收到加入，否则Mapper里的autofill注解会为EmployeeDTO去setUpdateTime，然而根本没这个方法导致报错！
+        // 缺少时间等字段，需要手动加入，否则Mapper里的autofill注解会为EmployeeDTO去setUpdateTime，然而根本没这个方法导致报错！
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);
         employeeMapper.update(employee);

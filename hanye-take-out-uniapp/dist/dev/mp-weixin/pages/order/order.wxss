@@ -84,6 +84,7 @@
   justify-content: center;
 }
 .viewport.data-v-88bf5328 {
+  padding-top: 130px;
   height: 100%;
   display: flex;
   flex-direction: column;
