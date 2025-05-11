@@ -10,7 +10,7 @@
     <view class="fifty">{{ remark.length }} / 50</view>
   </view>
   <view class="add_address">
-    <button class="add_btn" type="primary" :plain="true" @click="returnToSubmit()">完成</button>
+    <button class="add_btn" :plain="true" @click="returnToSubmit()">完成</button>
   </view>
 </template>
 

@@ -67,6 +67,39 @@ vue3脚手架可以看vue官网创建，建好脚手架再将我的代码导入�
 
 要编译的话需要 `npm run dev:mp-weixin`，之后修改uniapp的内容时，微信开发者工具里编译好的内容也会相应作出修改
 
+#### 登录问题
+
+在 [小程序登录代码](https://github.com/Henryers/hanye-take-out/blob/main/hanye-take-out-uniapp/src/pages/login/login.vue) 中，微信快捷登录是本项目的登录方式，模拟快捷登录只是个toast提示
+
+首先看该部分的代码，点击按钮会执行 `login` 方法，调用 `loginAPI` ，请求 `user/user/login` 后端接口
+
+然后我们来到 [后端的接口部分](https://github.com/Henryers/hanye-take-out/blob/main/hanye-take-out-springboot3/server/src/main/java/fun/cyhgraph/controller/user/UserController.java)，通过方法的调用，不断点击内部实现，可以看到如下部分：
+
+```java
+/**
+ * 调用微信接口服务，获取微信用户的openid
+ * 4参数： appid secret(在小程序平台查看，忘了就重置) 临时登录凭证code 常量authorization_code
+ * @param code
+ * @return
+ */
+private String getOpenId(String code) {
+    // 调用微信接口服务，获得当前微信用户的openid
+    Map<String, String> map = new HashMap<>();
+    map.put("appid", weChatProperties.getAppid());
+    map.put("secret", weChatProperties.getSecret());
+    map.put("js_code", code);
+    map.put("grant_type", "authorization_code");
+    // 利用HttpClient来调用微信的API服务，得到序列化好的json
+    String json = HttpClientUtil.doGet(WX_LOGIN, map); // 需自定义HttpClientUtil工具类
+    // 解析返回的json对象，并抽取其中的openid
+    JSONObject jsonObject = JSON.parseObject(json);
+    String openid = jsonObject.getString("openid");
+    return openid;
+}
+```
+
+可以看到，它需要获取到appid和secret，这一部分写在 [application-dev.yml](https://github.com/Henryers/hanye-take-out/blob/main/hanye-take-out-springboot3/server/src/main/resources/application-dev.yml) 里面，大家需要把这两个字符串改成自己的，**很多人忘记改导致小程序一直登不上（显示登录成功，但是查看菜品时没办法看到，直接401跳回来）**，这点要注意！
+
 ### 其他
 
 其他后端配置基本和苍穹外卖差不多，大家可以参照黑马的教程

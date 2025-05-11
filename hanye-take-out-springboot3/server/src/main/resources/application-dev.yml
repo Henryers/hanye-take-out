@@ -10,9 +10,10 @@ hanye:
     password: 123456
     database: 1
   wechat:
+    # 下面这两句改成自己的，不然小程序登不上！
     appid: wxbd5d45c4c0860e6d
     secret: 3e9d250d89a4140bdb5aac8d69aa23bb
-#    别人的文件，由于没企业商户号，这里只是摆设
+    # 别人的文件，由于没企业商户号，这里只是摆设
     mchid: 1561414331
     mchSerialNo: 4B3B3DC35414AD50B1B755BAF8DE9CC7CF407606
     privateKeyFilePath: C:\software\apiclient_key.pem
